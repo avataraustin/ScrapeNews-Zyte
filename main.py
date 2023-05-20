@@ -3,6 +3,8 @@ import time
 import random
 import csv
 
+#Running this script will scrape top news from apnews and store in csv (will take a while to do this)
+
 #import the CrawlerProcess for following links
 from scrapy.crawler import CrawlerProcess
 
