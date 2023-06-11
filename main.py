@@ -3,7 +3,7 @@ import time
 import random
 import csv
 
-#Running this script will scrape top news from apnews and store in csv (will take a while to do this)
+#Running this script will scrape top news from apnews and store in csv (will take a while to do this) It may also result in ip blacklisting by the site being scraped.
 
 #import the CrawlerProcess for following links
 from scrapy.crawler import CrawlerProcess
@@ -45,7 +45,9 @@ def scrape_top_news():
       # the format of '/article/tiktok-ban-montana-lawsuit-72be560de89fb87e3c677c8e0cfd9fec' for example.
       # so the parent domain portion would need to be added
       #"https://apnews.com" + the link string stored from above.
-      for url in top_news_links:
+
+      #scrape only the first 10 top news links
+      for url in top_news_links[0:10]:
         time.sleep(random.randint(8,35)) #random time between requests to hopefully avoid labeling as a bot
         # appending to a list to work with later
         news_story_links.append("https://apnews.com"+url)
