@@ -30,6 +30,14 @@ python-versions = ">=3.7"
 frozenlist = ">=1.1.0"
 
 [[package]]
+name = "andi"
+version = "0.4.1"
+description = "Library for annotation-based dependency injection"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "argon2-cffi"
 version = "21.3.0"
 description = "The secure Argon2 password hashing algorithm."
@@ -59,6 +67,14 @@ cffi = ">=1.0.1"
 [package.extras]
 dev = ["pytest", "cogapp", "pre-commit", "wheel"]
 tests = ["pytest"]
+
+[[package]]
+name = "async-lru"
+version = "1.0.3"
+description = "Simple lru_cache for asyncio"
+category = "main"
+optional = false
+python-versions = ">=3.6"
 
 [[package]]
 name = "async-timeout"
@@ -98,6 +114,14 @@ six = "*"
 
 [package.extras]
 visualize = ["graphviz (>0.5.1)", "Twisted (>=16.1.1)"]
+
+[[package]]
+name = "brotli"
+version = "1.0.9"
+description = "Python bindings for the Brotli compression library"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "certifi"
@@ -228,6 +252,17 @@ description = "A list-like structure which implements collections.abc.MutableSeq
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "html-text"
+version = "0.5.2"
+description = "Extract text from HTML"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+lxml = "*"
 
 [[package]]
 name = "hyperlink"
@@ -564,6 +599,17 @@ pycryptodomex = ">=3.12.0,<4.0.0"
 docs = ["Sphinx[docs] (>=4.3.2,<6.0.0)", "sphinx-autodoc-typehints[docs] (==1.12.0)", "sphinx-rtd-theme[docs] (>=1.0.0,<2.0.0)"]
 
 [[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
 name = "python-lsp-jsonrpc"
 version = "1.0.0"
 description = "JSON RPC 2.0 server library"
@@ -700,6 +746,14 @@ dev = ["pytest (>=7.0.1)", "pytest-timeout (>=2.1.0)", "build (>=0.7.0)", "pre-c
 doc = ["pytoolconfig", "sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)"]
 
 [[package]]
+name = "runstats"
+version = "2.0.0"
+description = "Compute statistics and regression in one pass"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "scrapy"
 version = "2.9.0"
 description = "A high-level Web Crawling and Web Scraping framework"
@@ -725,6 +779,41 @@ tldextract = "*"
 Twisted = ">=18.9.0"
 w3lib = ">=1.17.0"
 "zope.interface" = ">=5.1.0"
+
+[[package]]
+name = "scrapy-poet"
+version = "0.13.0"
+description = "Page Object pattern for Scrapy"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+andi = ">=0.4.1"
+attrs = ">=21.3.0"
+parsel = ">=1.5.0"
+scrapy = ">=2.6.0"
+sqlitedict = ">=1.5.0"
+time-machine = "*"
+twisted = ">=18.9.0"
+url-matcher = ">=0.2.0"
+web-poet = ">=0.12.0"
+
+[[package]]
+name = "scrapy-zyte-api"
+version = "0.9.0"
+description = "Client library to process URLs through Zyte API"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+packaging = ">=20.0"
+scrapy = ">=2.0.1"
+scrapy-poet = ">=0.9.0"
+web-poet = ">=0.13.0"
+zyte-api = ">=0.4.0"
+zyte-common-items = "*"
 
 [[package]]
 name = "service-identity"
@@ -756,6 +845,36 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
+name = "sqlitedict"
+version = "2.1.0"
+description = "Persistent dict in Python, backed up by sqlite3 and pickle, multithread-safe."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "tenacity"
+version = "8.2.2"
+description = "Retry code until it succeeds"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+doc = ["reno", "sphinx", "tornado (>=4.5)"]
+
+[[package]]
+name = "time-machine"
+version = "2.11.0"
+description = "Travel through time in your tests."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+python-dateutil = "*"
+
+[[package]]
 name = "tldextract"
 version = "3.4.4"
 description = "Accurately separates a URL's subdomain, domain, and public suffix, using the Public Suffix List (PSL). By default, this includes the public ICANN TLDs and their exceptions. You can optionally support the Public Suffix List's private domains as well."
@@ -784,6 +903,23 @@ description = "A lil' TOML parser"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "tqdm"
+version = "4.65.0"
+description = "Fast, Extensible Progress Meter"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+dev = ["py-make (>=0.1.0)", "twine", "wheel"]
+notebook = ["ipywidgets (>=6)"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
 
 [[package]]
 name = "twisted"
@@ -845,6 +981,17 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "url-matcher"
+version = "0.2.0"
+description = "URL matching rules library to connect URLs with resources"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+tldextract = "*"
+
+[[package]]
 name = "urllib3"
 version = "1.26.14"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -864,6 +1011,27 @@ description = "Library of web-related functions"
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "web-poet"
+version = "0.13.1"
+description = "Zyte's Page Object pattern for web scraping"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+andi = "*"
+async-lru = ">=1.0.3"
+attrs = ">=21.3.0"
+itemadapter = ">=0.8.0"
+multidict = "*"
+packaging = "*"
+parsel = "*"
+python-dateutil = "*"
+time-machine = "*"
+url-matcher = "*"
+w3lib = ">=1.22.0"
 
 [[package]]
 name = "werkzeug"
@@ -920,19 +1088,68 @@ docs = ["sphinx", "repoze.sphinx.autointerface"]
 test = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 
+[[package]]
+name = "zyte-api"
+version = "0.4.5"
+description = "Python interface to Zyte API"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+aiohttp = ">=3.8.0"
+attrs = "*"
+brotli = "*"
+runstats = "*"
+tenacity = "*"
+tqdm = "*"
+w3lib = ">=2.1.1"
+
+[[package]]
+name = "zyte-common-items"
+version = "0.7.0"
+description = "Item definitions for Zyte API schema"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+attrs = ">=21.3.0"
+itemadapter = ">=0.8.0"
+web-poet = ">=0.7.0"
+zyte-parsers = "*"
+
+[[package]]
+name = "zyte-parsers"
+version = "0.2.0"
+description = "Parsing of data from web pages."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+attrs = ">=21.3.0"
+html-text = "*"
+lxml = "*"
+parsel = "*"
+w3lib = "*"
+
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "ba4b9752a2af42ac563839f082193ad664db0ccd38c2bc50f26fe5ee702c710e"
+content-hash = "bfe7301e780ddaab5bb21f2dee901b85c38e28e1753069ae8ad6fc7c3333448f"
 
 [metadata.files]
 aiohttp = []
 aiosignal = []
+andi = []
 argon2-cffi = []
 argon2-cffi-bindings = []
+async-lru = []
 async-timeout = []
 attrs = []
 automat = []
+brotli = []
 certifi = []
 cffi = []
 charset-normalizer = []
@@ -945,6 +1162,7 @@ debugpy = []
 filelock = []
 flask = []
 frozenlist = []
+html-text = []
 hyperlink = []
 idna = []
 incremental = []
@@ -976,6 +1194,7 @@ pyflakes = []
 pyopenssl = []
 pypydispatcher = []
 pyseto = []
+python-dateutil = []
 python-lsp-jsonrpc = []
 pytoolconfig = []
 queuelib = []
@@ -984,20 +1203,32 @@ replit-python-lsp-server = []
 requests = []
 requests-file = []
 rope = []
+runstats = []
 scrapy = []
+scrapy-poet = []
+scrapy-zyte-api = []
 service-identity = []
 six = []
+sqlitedict = []
+tenacity = []
+time-machine = []
 tldextract = []
 toml = []
 tomli = []
+tqdm = []
 twisted = []
 twisted-iocpsupport = []
 typing-extensions = []
 ujson = []
+url-matcher = []
 urllib3 = []
 w3lib = []
+web-poet = []
 werkzeug = []
 whatthepatch = []
 yapf = []
 yarl = []
 "zope.interface" = []
+zyte-api = []
+zyte-common-items = []
+zyte-parsers = []
