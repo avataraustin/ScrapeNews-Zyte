@@ -6,7 +6,7 @@ import os
 import scrapy_zyte_api
 
 '''
-This version was adjusted until it yielded proper data, may need further adjustment to store properly in csv and also possible that news site will change tags rendering selector code obsolete until reupdated. 
+This version was adjusted until it yielded proper data, may need further adjustment as possible that news site will change tags rendering selector code obsolete until reupdated. 
 '''
 
 # ZYTE_API_KEY = os.environ['ZYTE_API_KEY']
@@ -51,9 +51,11 @@ def scrape_top_news():
     def parse1(self, response):
       ##### NEED TO ADJUST SELECTORS BELOW TO PROPERLY CHOOSE ON WEBSITE
       top_news_links = response.css('a[href^="https://apnews.com/article"]::attr(href)').getall()
-     
-      #scrape only the first 5 top news links
-      for story in top_news_links[0:5]: #was called url
+      print(top_news_links) #debugging purposes
+    
+      #scrape only a certain number of top news links
+      for story in top_news_links[0:6:2]: #<- currently saving 3 different links which is good but in the csv they are out of order as the link does not line up with the title and article which as in order
+
         
         # appending to a list to work with later
         news_story_links.append(story)
@@ -93,7 +95,7 @@ def scrape_top_news():
   #print values for debugging
   print(news_story_links)
   print(news_titles)
-  print(news_story_body)
+  #print(news_story_body)
 
   
   #zipping together the stored lists of link,title,body
