@@ -35,6 +35,7 @@ def scrape_top_news():
   news_story_links = []
   news_titles = []
   news_story_body = []
+  full_links = [] #testing to fix out of order issue
   
   class NewsScraper(scrapy.Spider):
     name = "news_scraper"
@@ -51,10 +52,10 @@ def scrape_top_news():
     def parse1(self, response):
       ##### NEED TO ADJUST SELECTORS BELOW TO PROPERLY CHOOSE ON WEBSITE
       top_news_links = response.css('a[href^="https://apnews.com/article"]::attr(href)').getall()
-      print(top_news_links) #debugging purposes
+      #print(top_news_links) #debugging purposes
     
       #scrape only a certain number of top news links
-      for story in top_news_links[0:6:2]: #<- currently saving 3 different links which is good but in the csv they are out of order as the link does not line up with the title and article which as in order
+      for story in top_news_links[0:3]: #<- currently saving 3 different links to work with, can adjust if more stories are wanted.
 
         
         # appending to a list to work with later
@@ -63,6 +64,8 @@ def scrape_top_news():
           
     # Second parsing method to process the next level in 
     def parse2(self, response):
+      full_link = response.url 
+      full_links.append(full_link) 
       article_title = response.css('h1::text').extract()
       #time.sleep(random.randint(5,20)) #random time between
       news_titles.append(article_title) #storing title to work with
@@ -93,13 +96,13 @@ def scrape_top_news():
   process.start()
   
   #print values for debugging
-  print(news_story_links)
+  print(full_links) 
   print(news_titles)
   #print(news_story_body)
 
   
   #zipping together the stored lists of link,title,body
-  zipped_news = zip(news_story_links, news_titles, news_story_body)
+  zipped_news = zip(full_links, news_titles, news_story_body)
   
   #store in a gathered data in csv:
   with open('stored_articles.csv', 'w', newline='') as f:
